@@ -18,11 +18,13 @@ import clsx from "clsx";
 type Platform = "G2" | "CAPTERRA" | "TRUSTPILOT" | "GOOGLE" | "APP_STORE" | "GOOGLE_PLAY";
 type ReviewStatus = "PENDING" | "SCREENSHOT_RECEIVED" | "PUBLISHED" | "NOT_PUBLISHED";
 type Flag = "EDU_EMAIL" | "TOO_SHORT" | "SUSPECTED_FAKE";
+type UserType = "PO" | "TENANT";
 
 interface Review {
   id: string;
   reviewerName: string;
   reviewerEmail: string;
+  userType: UserType;
   platform: Platform;
   rating: number;
   reviewText: string | null;
@@ -66,123 +68,66 @@ const FLAG_CONFIG: Record<Flag, { label: string; tooltip: string }> = {
 
 const SAMPLE_REVIEWS: Review[] = [
   {
-    id: "rv-1",
-    reviewerName: "Sarah Mitchell",
-    reviewerEmail: "sarah.mitchell@gmail.com",
-    platform: "G2",
-    rating: 5,
+    id: "rv-1", userType: "PO",
+    reviewerName: "Sarah Mitchell", reviewerEmail: "sarah.mitchell@gmail.com",
+    platform: "G2", rating: 5,
     reviewText: "Innago has completely transformed how I manage my rental properties. The rent collection feature alone saves me hours every month.",
-    screenshotUrl: null,
-    reviewUrl: "https://www.g2.com/products/innago/reviews",
-    status: "PUBLISHED",
-    flags: [],
-    round: "Round 1 — June 2025",
-    outreachedAt: "2025-05-20",
-    screenshotReceivedAt: "2025-05-28",
-    publishedAt: "2025-06-01",
-    giftCardStatus: "PENDING",
+    screenshotUrl: null, reviewUrl: "https://www.g2.com/products/innago/reviews",
+    status: "PUBLISHED", flags: [], round: "Round 1 — June 2025",
+    outreachedAt: "2025-05-20", screenshotReceivedAt: "2025-05-28", publishedAt: "2025-06-01", giftCardStatus: "PENDING",
   },
   {
-    id: "rv-2",
-    reviewerName: "Sarah Mitchell",
-    reviewerEmail: "sarah.mitchell@gmail.com",
-    platform: "TRUSTPILOT",
-    rating: 5,
+    id: "rv-2", userType: "PO",
+    reviewerName: "Sarah Mitchell", reviewerEmail: "sarah.mitchell@gmail.com",
+    platform: "TRUSTPILOT", rating: 5,
     reviewText: "Really solid platform. Been using it for 2 years and it keeps getting better.",
-    screenshotUrl: null,
-    reviewUrl: "https://www.trustpilot.com/review/innago.com",
-    status: "PUBLISHED",
-    flags: [],
-    round: "Round 1 — June 2025",
-    outreachedAt: "2025-05-20",
-    screenshotReceivedAt: "2025-05-30",
-    publishedAt: "2025-06-01",
-    giftCardStatus: "PENDING",
+    screenshotUrl: null, reviewUrl: "https://www.trustpilot.com/review/innago.com",
+    status: "PUBLISHED", flags: [], round: "Round 1 — June 2025",
+    outreachedAt: "2025-05-20", screenshotReceivedAt: "2025-05-30", publishedAt: "2025-06-01", giftCardStatus: "PENDING",
   },
   {
-    id: "rv-3",
-    reviewerName: "James Okafor",
-    reviewerEmail: "j.okafor@gmail.com",
-    platform: "APP_STORE",
-    rating: 5,
+    id: "rv-3", userType: "TENANT",
+    reviewerName: "James Okafor", reviewerEmail: "j.okafor@gmail.com",
+    platform: "APP_STORE", rating: 5,
     reviewText: "Great app for collecting rent. Easy to use and tenants love it too.",
-    screenshotUrl: null,
-    reviewUrl: null,
-    status: "SCREENSHOT_RECEIVED",
-    flags: [],
-    round: "Round 1 — June 2025",
-    outreachedAt: "2025-05-22",
-    screenshotReceivedAt: "2025-06-02",
-    publishedAt: null,
-    giftCardStatus: "NOT_APPLICABLE",
+    screenshotUrl: null, reviewUrl: null,
+    status: "SCREENSHOT_RECEIVED", flags: [], round: "Round 1 — June 2025",
+    outreachedAt: "2025-05-22", screenshotReceivedAt: "2025-06-02", publishedAt: null, giftCardStatus: "NOT_APPLICABLE",
   },
   {
-    id: "rv-4",
-    reviewerName: "Dana Kowalski",
-    reviewerEmail: "dkowalski@yahoo.com",
-    platform: "GOOGLE_PLAY",
-    rating: 5,
+    id: "rv-4", userType: "TENANT",
+    reviewerName: "Dana Kowalski", reviewerEmail: "dkowalski@yahoo.com",
+    platform: "GOOGLE_PLAY", rating: 5,
     reviewText: "Very helpful for managing multiple units.",
-    screenshotUrl: null,
-    reviewUrl: null,
-    status: "SCREENSHOT_RECEIVED",
-    flags: ["TOO_SHORT"],
-    round: "Round 1 — June 2025",
-    outreachedAt: "2025-05-22",
-    screenshotReceivedAt: "2025-06-02",
-    publishedAt: null,
-    giftCardStatus: "NOT_APPLICABLE",
+    screenshotUrl: null, reviewUrl: null,
+    status: "SCREENSHOT_RECEIVED", flags: ["TOO_SHORT"], round: "Round 1 — June 2025",
+    outreachedAt: "2025-05-22", screenshotReceivedAt: "2025-06-02", publishedAt: null, giftCardStatus: "NOT_APPLICABLE",
   },
   {
-    id: "rv-5",
-    reviewerName: "Marcus Webb",
-    reviewerEmail: "marcus.webb@gmail.com",
-    platform: "TRUSTPILOT",
-    rating: 2,
+    id: "rv-5", userType: "PO",
+    reviewerName: "Marcus Webb", reviewerEmail: "marcus.webb@gmail.com",
+    platform: "TRUSTPILOT", rating: 2,
     reviewText: "The maintenance request feature is clunky and hard to use. Tenants keep complaining they can't find where to submit requests.",
-    screenshotUrl: null,
-    reviewUrl: "https://www.trustpilot.com/review/innago.com",
-    status: "PUBLISHED",
-    flags: [],
-    round: "Round 1 — June 2025",
-    outreachedAt: "2025-05-22",
-    screenshotReceivedAt: "2025-05-29",
-    publishedAt: "2025-06-03",
-    giftCardStatus: "PENDING",
+    screenshotUrl: null, reviewUrl: "https://www.trustpilot.com/review/innago.com",
+    status: "PUBLISHED", flags: [], round: "Round 1 — June 2025",
+    outreachedAt: "2025-05-22", screenshotReceivedAt: "2025-05-29", publishedAt: "2025-06-03", giftCardStatus: "PENDING",
   },
   {
-    id: "rv-6",
-    reviewerName: "Tyler Nguyen",
-    reviewerEmail: "tyler.nguyen@mit.edu",
-    platform: "G2",
-    rating: 5,
-    reviewText: "Good product.",
-    screenshotUrl: null,
-    reviewUrl: null,
-    status: "NOT_PUBLISHED",
-    flags: ["EDU_EMAIL", "TOO_SHORT"],
-    round: "Round 1 — June 2025",
-    outreachedAt: "2025-05-22",
-    screenshotReceivedAt: "2025-05-27",
-    publishedAt: null,
-    giftCardStatus: "NOT_APPLICABLE",
+    id: "rv-6", userType: "PO",
+    reviewerName: "Tyler Nguyen", reviewerEmail: "tyler.nguyen@mit.edu",
+    platform: "G2", rating: 5, reviewText: "Good product.",
+    screenshotUrl: null, reviewUrl: null,
+    status: "NOT_PUBLISHED", flags: ["EDU_EMAIL", "TOO_SHORT"], round: "Round 1 — June 2025",
+    outreachedAt: "2025-05-22", screenshotReceivedAt: "2025-05-27", publishedAt: null, giftCardStatus: "NOT_APPLICABLE",
   },
   {
-    id: "rv-7",
-    reviewerName: "Priya Nair",
-    reviewerEmail: "priya.nair@gmail.com",
-    platform: "G2",
-    rating: 5,
+    id: "rv-7", userType: "PO",
+    reviewerName: "Priya Nair", reviewerEmail: "priya.nair@gmail.com",
+    platform: "G2", rating: 5,
     reviewText: "The lease management tools are excellent. Made going paperless so much easier.",
-    screenshotUrl: null,
-    reviewUrl: "https://www.g2.com/products/innago/reviews",
-    status: "PUBLISHED",
-    flags: [],
-    round: "Round 1 — June 2025",
-    outreachedAt: "2025-05-20",
-    screenshotReceivedAt: "2025-05-26",
-    publishedAt: "2025-05-28",
-    giftCardStatus: "SENT",
+    screenshotUrl: null, reviewUrl: "https://www.g2.com/products/innago/reviews",
+    status: "PUBLISHED", flags: [], round: "Round 1 — June 2025",
+    outreachedAt: "2025-05-20", screenshotReceivedAt: "2025-05-26", publishedAt: "2025-05-28", giftCardStatus: "SENT",
   },
   {
     id: "rv-8",
@@ -202,6 +147,19 @@ const SAMPLE_REVIEWS: Review[] = [
     giftCardStatus: "NOT_APPLICABLE",
   },
 ];
+
+function UserTypeTag({ type }: { type: "PO" | "TENANT" }) {
+  return (
+    <span className={clsx(
+      "text-xs px-1.5 py-0.5 rounded-full font-semibold border",
+      type === "PO"
+        ? "bg-violet-50 text-violet-700 border-violet-200"
+        : "bg-teal-50 text-teal-700 border-teal-200"
+    )}>
+      {type}
+    </span>
+  );
+}
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -402,6 +360,7 @@ export default function ReviewsPage() {
                 <div className="min-w-0">
                   <div className="flex items-center gap-1.5">
                     <span className="text-sm font-medium text-gray-900 truncate">{review.reviewerName}</span>
+                    <UserTypeTag type={review.userType} />
                     {review.flags.map((f) => (
                       <span key={f} title={FLAG_CONFIG[f].tooltip}
                         className="inline-flex items-center gap-0.5 text-xs bg-amber-50 text-amber-700 border border-amber-200 px-1.5 py-0.5 rounded-full">

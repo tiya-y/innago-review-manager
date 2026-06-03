@@ -18,11 +18,22 @@ import clsx from "clsx";
 
 type Platform = "G2" | "CAPTERRA" | "TRUSTPILOT" | "GOOGLE" | "APP_STORE" | "GOOGLE_PLAY";
 type OutreachStatus = "SENT" | "REPLIED" | "NO_RESPONSE" | "RESOLVED";
+type UserType = "PO" | "TENANT";
+
+function UserTypeTag({ type }: { type: UserType }) {
+  return (
+    <span className={clsx(
+      "text-xs px-1.5 py-0.5 rounded-full font-semibold border",
+      type === "PO" ? "bg-violet-50 text-violet-700 border-violet-200" : "bg-teal-50 text-teal-700 border-teal-200"
+    )}>{type}</span>
+  );
+}
 
 interface OutreachRecord {
   id: string;
   reviewerName: string;
   reviewerEmail: string;
+  userType: UserType;
   platform: Platform;
   rating: number;
   reviewText: string;
@@ -62,7 +73,7 @@ const STATUS_CONFIG: Record<OutreachStatus, { label: string; color: string }> = 
 
 const SAMPLE_OUTREACH: OutreachRecord[] = [
   {
-    id: "o-1",
+    id: "o-1", userType: "PO",
     reviewerName: "Marcus Webb",
     reviewerEmail: "marcus.webb@gmail.com",
     platform: "TRUSTPILOT",
@@ -81,7 +92,7 @@ const SAMPLE_OUTREACH: OutreachRecord[] = [
     notes: "",
   },
   {
-    id: "o-2",
+    id: "o-2", userType: "PO",
     reviewerName: "Carla Hernandez",
     reviewerEmail: "c.hernandez@gmail.com",
     platform: "GOOGLE",
@@ -100,7 +111,7 @@ const SAMPLE_OUTREACH: OutreachRecord[] = [
     notes: "She replied — issue was a billing question. Connecting her with support team.",
   },
   {
-    id: "o-3",
+    id: "o-3", userType: "PO",
     reviewerName: "Derek Sousa",
     reviewerEmail: "derek.s@gmail.com",
     platform: "G2",
@@ -119,7 +130,7 @@ const SAMPLE_OUTREACH: OutreachRecord[] = [
     notes: "Jumped on a call. Issue was specific to older Android. Engineering fixed in v3.4.1. He updated review to 4 stars.",
   },
   {
-    id: "o-4",
+    id: "o-4", userType: "PO",
     reviewerName: "Tina Bowers",
     reviewerEmail: "tbowers@yahoo.com",
     platform: "CAPTERRA",
@@ -249,6 +260,7 @@ export default function OutreachPage() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="font-medium text-sm text-gray-900">{record.reviewerName}</span>
+                    <UserTypeTag type={record.userType} />
                     <span className={clsx("text-xs px-2 py-0.5 rounded-full font-medium", PLATFORM_COLORS[record.platform])}>
                       {PLATFORM_LABELS[record.platform]}
                     </span>

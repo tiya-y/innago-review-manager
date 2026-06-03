@@ -19,6 +19,16 @@ import clsx from "clsx";
 
 type Platform = "G2" | "CAPTERRA" | "TRUSTPILOT" | "GOOGLE" | "APP_STORE" | "GOOGLE_PLAY";
 type QueueItemStatus = "PENDING" | "APPROVED" | "DISMISSED";
+type UserType = "PO" | "TENANT";
+
+function UserTypeTag({ type }: { type: UserType }) {
+  return (
+    <span className={clsx(
+      "text-xs px-1.5 py-0.5 rounded-full font-semibold border",
+      type === "PO" ? "bg-violet-50 text-violet-700 border-violet-200" : "bg-teal-50 text-teal-700 border-teal-200"
+    )}>{type}</span>
+  );
+}
 
 interface PlatformReview {
   platform: Platform;
@@ -42,6 +52,7 @@ interface ReviewerQueueItem {
   status: QueueItemStatus;
   reviewerName: string;
   reviewerEmail: string;
+  userType: UserType;
   reviews: PlatformReview[];
   outreachDrafts: OutreachDraft[]; // one per low-star review
   round: string;
@@ -68,6 +79,7 @@ const SAMPLE_QUEUE: ReviewerQueueItem[] = [
     status: "PENDING",
     reviewerName: "Sarah Mitchell",
     reviewerEmail: "sarah.mitchell@gmail.com",
+    userType: "PO",
     round: "Round 1 — June 2025",
     isEditingDraftId: null,
     reviews: [
@@ -95,6 +107,7 @@ const SAMPLE_QUEUE: ReviewerQueueItem[] = [
     status: "PENDING",
     reviewerName: "James Okafor",
     reviewerEmail: "j.okafor@gmail.com",
+    userType: "TENANT",
     round: "Round 1 — June 2025",
     isEditingDraftId: null,
     reviews: [
@@ -122,6 +135,7 @@ const SAMPLE_QUEUE: ReviewerQueueItem[] = [
     status: "PENDING",
     reviewerName: "Marcus Webb",
     reviewerEmail: "marcus.webb@gmail.com",
+    userType: "PO",
     round: "Round 1 — June 2025",
     isEditingDraftId: null,
     reviews: [
@@ -160,6 +174,7 @@ Innago`,
     status: "PENDING",
     reviewerName: "Carla Hernandez",
     reviewerEmail: "c.hernandez@gmail.com",
+    userType: "PO",
     round: "Round 1 — June 2025",
     isEditingDraftId: null,
     reviews: [
@@ -316,6 +331,7 @@ export default function QueuePage() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="font-medium text-sm text-gray-900">{item.reviewerName}</span>
+                    <UserTypeTag type={item.userType} />
                     {/* Platform + rating badges for each review */}
                     {item.reviews.map((r) => (
                       <span key={r.platform} className={clsx("inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full font-medium", PLATFORM_COLORS[r.platform])}>

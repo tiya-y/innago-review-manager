@@ -16,11 +16,22 @@ import clsx from "clsx";
 
 type Platform = "G2" | "CAPTERRA" | "TRUSTPILOT" | "GOOGLE" | "APP_STORE" | "GOOGLE_PLAY";
 type GiftCardStatus = "PENDING" | "SENT";
+type UserType = "PO" | "TENANT";
+
+function UserTypeTag({ type }: { type: UserType }) {
+  return (
+    <span className={clsx(
+      "text-xs px-1.5 py-0.5 rounded-full font-semibold border",
+      type === "PO" ? "bg-violet-50 text-violet-700 border-violet-200" : "bg-teal-50 text-teal-700 border-teal-200"
+    )}>{type}</span>
+  );
+}
 
 interface GiftCardItem {
   id: string;
   reviewerName: string;
   reviewerEmail: string;
+  userType: UserType;
   platform: Platform;
   round: string;
   amount: number;
@@ -35,7 +46,7 @@ interface GiftCardItem {
 // Sample data — will come from DB once wired up
 const SAMPLE_DATA: GiftCardItem[] = [
   {
-    id: "1",
+    id: "1", userType: "PO",
     reviewerName: "Sarah Mitchell",
     reviewerEmail: "sarah.mitchell@gmail.com",
     platform: "G2",
@@ -49,7 +60,7 @@ const SAMPLE_DATA: GiftCardItem[] = [
     reviewPublishedAt: "2025-06-01",
   },
   {
-    id: "2",
+    id: "2", userType: "TENANT",
     reviewerName: "James Okafor",
     reviewerEmail: "j.okafor@gmail.com",
     platform: "APP_STORE",
@@ -63,7 +74,7 @@ const SAMPLE_DATA: GiftCardItem[] = [
     reviewPublishedAt: "2025-06-02",
   },
   {
-    id: "3",
+    id: "3", userType: "TENANT",
     reviewerName: "Dana Kowalski",
     reviewerEmail: "dkowalski@yahoo.com",
     platform: "GOOGLE_PLAY",
@@ -77,7 +88,7 @@ const SAMPLE_DATA: GiftCardItem[] = [
     reviewPublishedAt: "2025-06-02",
   },
   {
-    id: "4",
+    id: "4", userType: "PO",
     reviewerName: "Tom Reynolds",
     reviewerEmail: "t.reynolds@gmail.com",
     platform: "TRUSTPILOT",
@@ -91,7 +102,7 @@ const SAMPLE_DATA: GiftCardItem[] = [
     reviewPublishedAt: "2025-05-30",
   },
   {
-    id: "5",
+    id: "5", userType: "PO",
     reviewerName: "Priya Nair",
     reviewerEmail: "priya.nair@gmail.com",
     platform: "G2",
@@ -269,6 +280,7 @@ export default function GiftCardsPage() {
                     )}>
                       {item.reviewerName}
                     </span>
+                    <UserTypeTag type={item.userType} />
                     <span className={clsx(
                       "text-xs px-2 py-0.5 rounded-full font-medium",
                       PLATFORM_COLORS[item.platform]
