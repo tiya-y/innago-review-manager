@@ -130,7 +130,7 @@ const SAMPLE_REVIEWS: Review[] = [
     outreachedAt: "2025-05-20", screenshotReceivedAt: "2025-05-26", publishedAt: "2025-05-28", giftCardStatus: "SENT",
   },
   {
-    id: "rv-8",
+    id: "rv-8", userType: "PO",
     reviewerName: "Ben Hartley",
     reviewerEmail: "ben.hartley@gmail.com",
     platform: "GOOGLE",
