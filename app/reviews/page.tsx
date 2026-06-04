@@ -73,7 +73,7 @@ const SAMPLE_REVIEWS: Review[] = [
     platform: "G2", rating: 5,
     reviewText: "Innago has completely transformed how I manage my rental properties. The rent collection feature alone saves me hours every month.",
     screenshotUrl: null, reviewUrl: "https://www.g2.com/products/innago/reviews",
-    status: "PUBLISHED", flags: [], round: "Round 1 — June 2025",
+    status: "PUBLISHED", flags: [], round: "2025-06-01",
     outreachedAt: "2025-05-20", screenshotReceivedAt: "2025-05-28", publishedAt: "2025-06-01", giftCardStatus: "PENDING",
   },
   {
@@ -82,7 +82,7 @@ const SAMPLE_REVIEWS: Review[] = [
     platform: "TRUSTPILOT", rating: 5,
     reviewText: "Really solid platform. Been using it for 2 years and it keeps getting better.",
     screenshotUrl: null, reviewUrl: "https://www.trustpilot.com/review/innago.com",
-    status: "PUBLISHED", flags: [], round: "Round 1 — June 2025",
+    status: "PUBLISHED", flags: [], round: "2025-06-01",
     outreachedAt: "2025-05-20", screenshotReceivedAt: "2025-05-30", publishedAt: "2025-06-01", giftCardStatus: "PENDING",
   },
   {
@@ -91,7 +91,7 @@ const SAMPLE_REVIEWS: Review[] = [
     platform: "APP_STORE", rating: 5,
     reviewText: "Great app for collecting rent. Easy to use and tenants love it too.",
     screenshotUrl: null, reviewUrl: null,
-    status: "SCREENSHOT_RECEIVED", flags: [], round: "Round 1 — June 2025",
+    status: "SCREENSHOT_RECEIVED", flags: [], round: "2025-06-01",
     outreachedAt: "2025-05-22", screenshotReceivedAt: "2025-06-02", publishedAt: null, giftCardStatus: "NOT_APPLICABLE",
   },
   {
@@ -100,7 +100,7 @@ const SAMPLE_REVIEWS: Review[] = [
     platform: "GOOGLE_PLAY", rating: 5,
     reviewText: "Very helpful for managing multiple units.",
     screenshotUrl: null, reviewUrl: null,
-    status: "SCREENSHOT_RECEIVED", flags: ["TOO_SHORT"], round: "Round 1 — June 2025",
+    status: "SCREENSHOT_RECEIVED", flags: ["TOO_SHORT"], round: "2025-06-01",
     outreachedAt: "2025-05-22", screenshotReceivedAt: "2025-06-02", publishedAt: null, giftCardStatus: "NOT_APPLICABLE",
   },
   {
@@ -109,7 +109,7 @@ const SAMPLE_REVIEWS: Review[] = [
     platform: "TRUSTPILOT", rating: 2,
     reviewText: "The maintenance request feature is clunky and hard to use. Tenants keep complaining they can't find where to submit requests.",
     screenshotUrl: null, reviewUrl: "https://www.trustpilot.com/review/innago.com",
-    status: "PUBLISHED", flags: [], round: "Round 1 — June 2025",
+    status: "PUBLISHED", flags: [], round: "2025-06-01",
     outreachedAt: "2025-05-22", screenshotReceivedAt: "2025-05-29", publishedAt: "2025-06-03", giftCardStatus: "PENDING",
   },
   {
@@ -117,7 +117,7 @@ const SAMPLE_REVIEWS: Review[] = [
     reviewerName: "Tyler Nguyen", reviewerEmail: "tyler.nguyen@mit.edu",
     platform: "G2", rating: 5, reviewText: "Good product.",
     screenshotUrl: null, reviewUrl: null,
-    status: "NOT_PUBLISHED", flags: ["EDU_EMAIL", "TOO_SHORT"], round: "Round 1 — June 2025",
+    status: "NOT_PUBLISHED", flags: ["EDU_EMAIL", "TOO_SHORT"], round: "2025-06-01",
     outreachedAt: "2025-05-22", screenshotReceivedAt: "2025-05-27", publishedAt: null, giftCardStatus: "NOT_APPLICABLE",
   },
   {
@@ -126,7 +126,7 @@ const SAMPLE_REVIEWS: Review[] = [
     platform: "G2", rating: 5,
     reviewText: "The lease management tools are excellent. Made going paperless so much easier.",
     screenshotUrl: null, reviewUrl: "https://www.g2.com/products/innago/reviews",
-    status: "PUBLISHED", flags: [], round: "Round 1 — June 2025",
+    status: "PUBLISHED", flags: [], round: "2025-06-01",
     outreachedAt: "2025-05-20", screenshotReceivedAt: "2025-05-26", publishedAt: "2025-05-28", giftCardStatus: "SENT",
   },
   {
@@ -140,7 +140,7 @@ const SAMPLE_REVIEWS: Review[] = [
     reviewUrl: null,
     status: "PENDING",
     flags: [],
-    round: "Round 1 — June 2025",
+    round: "2025-06-01",
     outreachedAt: "2025-06-01",
     screenshotReceivedAt: null,
     publishedAt: null,
@@ -444,7 +444,7 @@ export default function ReviewsPage() {
                         <ExternalLink className="w-3.5 h-3.5" /> View on {PLATFORM_LABELS[review.platform]}
                       </a>
                     )}
-                    <span className="text-xs text-gray-400 ml-auto">{review.round}</span>
+                    <span className="text-xs text-gray-400 ml-auto">{formatDate(review.round)}</span>
                   </div>
                 </div>
               )}

@@ -29,7 +29,6 @@ interface PlatformTarget {
 
 interface Round {
   id: string;
-  name: string;
   status: RoundStatus;
   launchedAt: string;
   completedAt: string | null;
@@ -72,7 +71,6 @@ const STATUS_CONFIG: Record<RoundStatus, { label: string; color: string; icon: R
 const SAMPLE_ROUNDS: Round[] = [
   {
     id: "r-1",
-    name: "Round 1 — June 2025",
     status: "ACTIVE",
     launchedAt: "2025-06-01",
     completedAt: null,
@@ -92,7 +90,6 @@ const SAMPLE_ROUNDS: Round[] = [
   },
   {
     id: "r-2",
-    name: "Round 5 — March 2025",
     status: "COMPLETED",
     launchedAt: "2025-03-01",
     completedAt: "2025-03-31",
@@ -111,7 +108,6 @@ const SAMPLE_ROUNDS: Round[] = [
   },
   {
     id: "r-3",
-    name: "Round 4 — January 2025",
     status: "COMPLETED",
     launchedAt: "2025-01-06",
     completedAt: "2025-01-31",
@@ -129,7 +125,6 @@ const SAMPLE_ROUNDS: Round[] = [
   },
   {
     id: "r-4",
-    name: "Round 3 — October 2024",
     status: "COMPLETED",
     launchedAt: "2024-10-07",
     completedAt: "2024-10-31",
@@ -147,7 +142,6 @@ const SAMPLE_ROUNDS: Round[] = [
   },
   {
     id: "r-5",
-    name: "Round 2 — July 2024",
     status: "COMPLETED",
     launchedAt: "2024-07-08",
     completedAt: "2024-07-31",
@@ -244,7 +238,7 @@ export default function RoundsPage() {
                 {/* Name + meta */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="font-semibold text-sm text-gray-900">{round.name}</span>
+                    <span className="font-semibold text-sm text-gray-900">Outreach — {formatDate(round.launchedAt)}</span>
                     <span className={clsx("inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full border font-medium",
                       STATUS_CONFIG[round.status].color)}>
                       {STATUS_CONFIG[round.status].icon}

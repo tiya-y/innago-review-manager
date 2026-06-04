@@ -50,7 +50,7 @@ const SAMPLE_DATA: GiftCardItem[] = [
     reviewerName: "Sarah Mitchell",
     reviewerEmail: "sarah.mitchell@gmail.com",
     platform: "G2",
-    round: "Round 1 — June 2025",
+    round: "2025-06-01",
     amount: 25,
     reviewText: "Innago has completely transformed how I manage my rental properties. The rent collection feature alone saves me hours every month.",
     screenshotUrl: null,
@@ -64,7 +64,7 @@ const SAMPLE_DATA: GiftCardItem[] = [
     reviewerName: "James Okafor",
     reviewerEmail: "j.okafor@gmail.com",
     platform: "APP_STORE",
-    round: "Round 1 — June 2025",
+    round: "2025-06-01",
     amount: 20,
     reviewText: "Great app for collecting rent. Easy to use and tenants love it too.",
     screenshotUrl: null,
@@ -78,7 +78,7 @@ const SAMPLE_DATA: GiftCardItem[] = [
     reviewerName: "Dana Kowalski",
     reviewerEmail: "dkowalski@yahoo.com",
     platform: "GOOGLE_PLAY",
-    round: "Round 1 — June 2025",
+    round: "2025-06-01",
     amount: 10,
     reviewText: "Very helpful for managing multiple units. Would recommend.",
     screenshotUrl: null,
@@ -92,7 +92,7 @@ const SAMPLE_DATA: GiftCardItem[] = [
     reviewerName: "Tom Reynolds",
     reviewerEmail: "t.reynolds@gmail.com",
     platform: "TRUSTPILOT",
-    round: "Round 1 — June 2025",
+    round: "2025-06-01",
     amount: 15,
     reviewText: "Solid property management software. Customer support is responsive.",
     screenshotUrl: null,
@@ -106,7 +106,7 @@ const SAMPLE_DATA: GiftCardItem[] = [
     reviewerName: "Priya Nair",
     reviewerEmail: "priya.nair@gmail.com",
     platform: "G2",
-    round: "Round 1 — June 2025",
+    round: "2025-06-01",
     amount: 25,
     reviewText: "The lease management tools are excellent. Made going paperless so much easier.",
     screenshotUrl: null,
@@ -287,7 +287,7 @@ export default function GiftCardsPage() {
                     )}>
                       {PLATFORM_LABELS[item.platform]}
                     </span>
-                    <span className="text-xs text-gray-400">{item.round}</span>
+                    <span className="text-xs text-gray-400">{formatDate(item.round)}</span>
                   </div>
                   <div className="text-xs text-gray-400 mt-0.5">
                     {item.reviewerEmail} · Published {formatDate(item.reviewPublishedAt)}

@@ -80,7 +80,7 @@ const SAMPLE_OUTREACH: OutreachRecord[] = [
     rating: 2,
     reviewText: "The maintenance request feature is clunky and hard to use. Tenants keep complaining they can't find where to submit requests.",
     reviewUrl: "https://www.trustpilot.com/review/innago.com",
-    round: "Round 1 — June 2025",
+    round: "2025-06-01",
     emailSubject: "Following up on your Innago review — let's make this right",
     emailBody: `Hi Marcus,\n\nI saw your recent Trustpilot review and wanted to reach out personally. You mentioned the maintenance request feature is difficult to navigate — I completely understand how frustrating that must be, especially when your tenants are running into it too.\n\nI'd love to jump on a quick 15-minute call to walk you through some tips that might help, and also make sure we capture your feedback for our product team.\n\nWould you be open to a quick call this week?\n\nMose\nInnago`,
     publicResponse: "Hi Marcus, thank you for your honest feedback. We're sorry to hear the maintenance request flow has been frustrating — I've reached out to you directly to help get this sorted.",
@@ -99,7 +99,7 @@ const SAMPLE_OUTREACH: OutreachRecord[] = [
     rating: 3,
     reviewText: "Good software overall but customer support took 3 days to respond to my issue. For a paid product I'd expect faster help.",
     reviewUrl: null,
-    round: "Round 1 — June 2025",
+    round: "2025-06-01",
     emailSubject: "Your Innago experience — I want to help",
     emailBody: `Hi Carla,\n\nThank you for leaving a review — and I'm sorry to hear your support experience didn't meet expectations. A 3-day response time is not what we aim for.\n\nI'd love to connect and make sure your issue is fully resolved. Can I schedule a quick call?\n\nMose\nInnago`,
     publicResponse: "Hi Carla, thank you for your feedback. We sincerely apologize that our response time fell short. We've reached out to you directly to resolve your issue.",
@@ -118,7 +118,7 @@ const SAMPLE_OUTREACH: OutreachRecord[] = [
     rating: 2,
     reviewText: "Constant bugs in the mobile app. Has gotten better but still crashes more than it should.",
     reviewUrl: "https://www.g2.com/products/innago/reviews",
-    round: "Round 5 — March 2025",
+    round: "2025-03-01",
     emailSubject: "Your G2 review — want to make this right",
     emailBody: `Hi Derek,\n\nI saw your G2 review and wanted to follow up personally on the mobile app crashes you've been experiencing. Our engineering team has been working on stability fixes and I want to make sure your specific issues are on their radar.\n\nWould you be willing to jump on a quick call?\n\nMose\nInnago`,
     publicResponse: "Hi Derek, thank you for the honest feedback. Mobile app stability is a top priority and we're actively pushing fixes. I've reached out to you directly to get more details.",
@@ -137,7 +137,7 @@ const SAMPLE_OUTREACH: OutreachRecord[] = [
     rating: 1,
     reviewText: "Had a terrible onboarding experience. No one followed up after signup and I was left to figure everything out on my own.",
     reviewUrl: null,
-    round: "Round 4 — January 2025",
+    round: "2025-01-06",
     emailSubject: "Your Capterra review — I'm sorry we let you down",
     emailBody: `Hi Tina,\n\nI came across your Capterra review and wanted to reach out personally. Your onboarding experience sounds really frustrating and we failed you — I'm sorry for that.\n\nI'd love to make it right. Are you still using Innago? Can we set up time to walk through anything you need?\n\nMose\nInnago`,
     publicResponse: "Hi Tina, we're so sorry your onboarding experience fell short. This is not the standard we hold ourselves to. I've reached out to you directly and would love to make this right.",
@@ -275,7 +275,7 @@ export default function OutreachPage() {
                     )}
                   </div>
                   <div className="text-xs text-gray-400 mt-0.5">
-                    {record.reviewerEmail} · Sent {formatDate(record.sentAt)} · {record.round}
+                    {record.reviewerEmail} · Sent {formatDate(record.sentAt)} · Outreach {formatDate(record.round)}
                     {record.repliedAt && ` · Replied ${formatDate(record.repliedAt)}`}
                     {record.resolvedAt && ` · Resolved ${formatDate(record.resolvedAt)}`}
                   </div>

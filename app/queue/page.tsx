@@ -80,7 +80,7 @@ const SAMPLE_QUEUE: ReviewerQueueItem[] = [
     reviewerName: "Sarah Mitchell",
     reviewerEmail: "sarah.mitchell@gmail.com",
     userType: "PO",
-    round: "Round 1 — June 2025",
+    round: "2025-06-01",
     isEditingDraftId: null,
     reviews: [
       {
@@ -108,7 +108,7 @@ const SAMPLE_QUEUE: ReviewerQueueItem[] = [
     reviewerName: "James Okafor",
     reviewerEmail: "j.okafor@gmail.com",
     userType: "TENANT",
-    round: "Round 1 — June 2025",
+    round: "2025-06-01",
     isEditingDraftId: null,
     reviews: [
       {
@@ -136,7 +136,7 @@ const SAMPLE_QUEUE: ReviewerQueueItem[] = [
     reviewerName: "Marcus Webb",
     reviewerEmail: "marcus.webb@gmail.com",
     userType: "PO",
-    round: "Round 1 — June 2025",
+    round: "2025-06-01",
     isEditingDraftId: null,
     reviews: [
       {
@@ -175,7 +175,7 @@ Innago`,
     reviewerName: "Carla Hernandez",
     reviewerEmail: "c.hernandez@gmail.com",
     userType: "PO",
-    round: "Round 1 — June 2025",
+    round: "2025-06-01",
     isEditingDraftId: null,
     reviews: [
       {
@@ -349,7 +349,7 @@ export default function QueuePage() {
                     )}
                   </div>
                   <div className="text-xs text-gray-400 mt-0.5">
-                    {item.reviewerEmail} · {item.round} · {item.reviews.length} review{item.reviews.length > 1 ? "s" : ""}
+                    {item.reviewerEmail} · {formatDate(item.round)} · {item.reviews.length} review{item.reviews.length > 1 ? "s" : ""}
                   </div>
                 </div>
 
