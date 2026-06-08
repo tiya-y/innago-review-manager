@@ -8,6 +8,7 @@ datasource db {
 
 model Round {
   id          String      @id @default(cuid())
+  label       String?     // original round name from CSV (e.g. "Round 4 - Aug 2024")
   status      RoundStatus @default(DRAFT)
   createdAt   DateTime    @default(now())
   launchedAt  DateTime?
@@ -117,6 +118,12 @@ enum Platform {
   GOOGLE
   APP_STORE
   GOOGLE_PLAY
+  GOOD_FIRMS
+  SOURCE_FORGE
+  FINANCES_ONLINE
+  FACEBOOK
+  PRODUCT_HUNT
+  OTHER
 }
 
 enum UserType {
